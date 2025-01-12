@@ -159,7 +159,7 @@ MonoBehaviour:
   acceleration: 7
   decceleration: 7
   velPower: 0.9
-  frictionAmount: 50
+  frictionAmount: 0.2
 --- !u!61 &89598012
 BoxCollider2D:
   m_ObjectHideFlags: 0
