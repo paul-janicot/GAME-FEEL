@@ -160,8 +160,8 @@ MonoBehaviour:
   decceleration: 8
   velPower: 0.87
   frictionAmount: 0.25
-  jumpForce: 14
-  gravityDown: 3
+  jumpForce: 13
+  gravityDown: 4
 --- !u!61 &89598012
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -425,8 +425,8 @@ Transform:
   m_GameObject: {fileID: 218592853}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.81, y: -1.48, z: 0}
-  m_LocalScale: {x: 4.679063, y: 1, z: 1}
+  m_LocalPosition: {x: -6.57, y: -1.48, z: 0}
+  m_LocalScale: {x: 3.5587204, y: 0.77019, z: 0.77019}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -556,7 +556,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.1, y: 0.9, z: 0}
-  m_LocalScale: {x: 4.679063, y: 1, z: 1}
+  m_LocalScale: {x: 3.6864932, y: 0.78787, z: 0.78787}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}

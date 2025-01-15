@@ -1,10 +1,14 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Movement : MonoBehaviour
 {
     // Start is called before the first frame update
+    PlayerControls controls;
+
     public Rigidbody2D rb;
     public float speed;
     private float moveInput;
@@ -17,6 +21,28 @@ public class Movement : MonoBehaviour
     public float gravityDown;
 
     private bool isGrounded = false;
+
+    private void Awake()
+    {
+        controls = new PlayerControls();
+
+        controls.Gameplay.Right.performed += ctx => Right();
+        controls.Gameplay.Right.canceled += ctx => moveInput = 0f;
+
+        controls.Gameplay.Left.performed += ctx => Left();
+        controls.Gameplay.Left.canceled += ctx => moveInput = 0f;
+
+        controls.Gameplay.Jump.performed += ctx => Up();
+
+    }
+    void OnEnable()
+    {
+        controls.Gameplay.Enable();
+    }
+    void OnDisable()
+    {
+        controls.Gameplay.Disable();
+    }
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -27,19 +53,16 @@ public class Movement : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.D))
         {
-            moveInput = 1f;
+            Right();
         }
         else if (Input.GetKey(KeyCode.A))
         {
-            moveInput = -1f;
+            Left();
         }
-        else
+       
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            moveInput = 0f;
-        }
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
-        {
-            Jump();
+            Up();
         }
         if (rb.velocity.y < 0.2 && !isGrounded)
         {
@@ -79,6 +102,22 @@ public class Movement : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground") && !isGrounded)
         {
             isGrounded = true;
+        }
+    }
+    private void Right()
+    {
+        Debug.Log("caca");
+        moveInput = 1f;
+    }
+    private void Left()
+    {
+        moveInput = -1f;
+    }
+    private void Up()
+    {
+        if (isGrounded)
+        {
+            Jump();
         }
     }
 }
